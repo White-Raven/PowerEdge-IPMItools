@@ -185,7 +185,7 @@ In the Serial Communication options, they should then set the Serial Communicati
 Only one SOL session can be active at a time. 
 <details>
 <summary>
-<i>[CLICK ME] Here the cheatsheet of what you can use as various escape sequences within a SOL session: </i>
+<b>[CLICK ME] Here the cheatsheet of what you can use as various escape sequences within a SOL session: </b>
 </summary>
 <p>
 
@@ -224,7 +224,7 @@ The escape sequence ~+. terminates the session and resets the terminal settings.
 
 <details>
 <summary>
-<i>[CLICK ME] inittab and getty no longer works in RHEL7, so have fun with some config for systemd. </i>
+<b>[CLICK ME] inittab and getty no longer works in RHEL7, so have fun with some config for systemd. </b>
 </summary>
 <p>
 
@@ -338,6 +338,12 @@ System event log full | ```${idrac[@]}" raw 0x04 0x02 0x04 0x10 0x51 0x6f 0x04 0
 Whiiiich can't be run as is because the sensor IDs are platform specific. 
 
 Once the Platform Event Trap events are generated, you can verify them using the command ipmitool -I open sel list.
+  
+<b>[Click me maybe]</b>
+</summary>
+<p>
 
-# NIGHTMARE NIGHTMARE NIGHTMARE NIGHTMARE
+# NIGHTMARE NIGHTMARE NIGHTMARE NIGHTMARE NIGHTMARE NIGHTMARE NIGHTMARE NIGHTMARE NIGHTMARE NIGHTMARE
 
+</p>
+</details>
