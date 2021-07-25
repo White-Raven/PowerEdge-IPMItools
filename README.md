@@ -34,7 +34,9 @@ idrac=(ipmitool -I lanplus -H $IPMIHOST -U $IPMIUSER -P $IPMIPW -y $IPMIEK)
 
 "${idrac[@]}" ##your arguments##
 ```
+Ipmitool can be used in multiple ways, from sending commands to the IPMI of the same machine we're using the tool on, to sending them to the IPMI of an other machine. 
 
+This, and the generation of server you're on will change the -I interface type, between lan and lanplus amongst other ones, or for example if -H will be the actual IPMI host IP, or the nodename in some blade servers. 
 
 ## Introduction to the forgotten dead-C-scrolls for iDrac that can be handy
 
@@ -275,7 +277,7 @@ ipmitool user priv 3 4 1
 
 
 ## Blade stuff
-
+  
 #### Fishing for Dell Chassis ServiceTag from a node using hexcode and node programming
 
 Dell C6320 and similar blade servers, their chassis has its own service tag.
