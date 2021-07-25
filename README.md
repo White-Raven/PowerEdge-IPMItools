@@ -339,6 +339,9 @@ Whiiiich can't be run as is because the sensor IDs are platform specific.
 
 Once the Platform Event Trap events are generated, you can verify them using the command ipmitool -I open sel list.
   
+
+<details>
+<summary>  
 <b>[Click me maybe]</b>
 </summary>
 <p>
