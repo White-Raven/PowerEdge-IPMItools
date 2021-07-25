@@ -81,6 +81,11 @@ Once again, you can check my [repo](https://github.com/White-Raven/PowerEdge-shu
 Roughtly ```"${idrac[@]}" delloem [-mx -NPRUEFJTVY] command```
 
 #### Options
+<details>
+<summary>
+<b>[CLICK ME] Table colasped: </b>
+</summary>
+<p>
 
 Options | Descriptions 
 ------------ | -------------
@@ -95,8 +100,15 @@ Options | Descriptions
 ```-T``` | Use a specified IPMI LAN Authentication Type: 0=None, 1=MD2, 2=MD5, 4=Straight Password, 5=OEM.
 ```-V``` | Use a specified IPMI LAN privilege level. 1=Callback level, 2=User level, 3=Operator level, 4=Administrator level (default), 5=OEM level.
 ```-Y``` | Yes, do prompt the user for the IPMI LAN remote password. Alternatives for the password are -E or -P.
+</p>
+</details>
 
 #### Commands
+<details>
+<summary>
+<b>[CLICK ME] Table colasped: </b>
+</summary>
+<p>
 
 Commands | Descriptions 
 ------------ | -------------
@@ -117,7 +129,9 @@ Commands | Descriptions
 ```windbg start``` | Starts the windbg session (Cold Reset & SOL Activation)
 ```windbg end``` | Ends the windbg session (SOL Deactivation)
 ```vFlash info Card``` | Shows Extended SD Card information
-  
+</p>
+</details>
+
 For example :
   
 ```"${idrac[@]}" delloem powermonitor```
@@ -137,7 +151,7 @@ Just have fun with grep.
 ## IPMI commands
 <details>
 <summary>
-<b>[CLICK ME] Big table colasped: </b>
+<b>[CLICK ME] Table colasped: </b>
 </summary>
 <p>
 
