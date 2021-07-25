@@ -30,8 +30,43 @@ idrac=(ipmitool -I lanplus -H $IPMIHOST -U $IPMIUSER -P $IPMIPW -y $IPMIEK)
 
 "${idrac[@]}" ##your arguments##
 ```
+And that's EXACTLY what I will use all along this little page, because these never change!
 
-## Various Dell commands that can be handy
+
+## Various IPMI commands from forgotten dead-C-scrolls for iDrac that can be handy
+
+Some of them can feel like "eh, no point in having that displayed". Grep is your friend, and a little demo of it:
+```"${idrac[@]}" sdr type temperature```
+returns in my case:
+```
+Inlet Temp | 04h | ok | 7.1 | 20 degrees C
+Exhaust Temp | 01h | ok | 7.1 | 39 degrees C
+Temp | 0Eh | ok | 3.1 | 41 degrees C
+Temp | 0Fh | ok | 3.2 | 40 degrees C
+```
+BUT
+```
+"${idrac[@]}" sdr type temperature |grep 0Fh |grep degrees |grep -Po '\d{2}' | tail -1
+"${idrac[@]}" sdr type temperature |grep 0Fh |grep degrees |grep -Po '\d{2}' | tail -1
+```
+will return:
+```
+41
+40
+```
+Oh. Exploitable data.
+
+#### Fan Control - raw
+Since we pulled temperatures, let's talk about cooling.
+I posted there some time ago my [/PowerEdge-shutup](https://github.com/White-Raven/PowerEdge-shutup) repo, with a basic script to manage server cooling, with potentially lower speed (and noise) than the stock profiles.
+Going quickly over these, the commands used are as follow:
+```"${idrac[@]}" raw 0x30 0x30 0x01 0x00``` will stop the server from adjusting fanspeed by itself, no matter the temp, letting you have full manual control
+```"${idrac[@]}" raw 0x30 0x30 0x01 0x01``` will give back to the server the right to automate fan speed, following the profile set in bios/idrac
+```"${idrac[@]}" raw 0x30 0x30 0x02 0xff 0x"hex value 00-64"``` will let you adjust fan speeds.
+
+These are hexadecimal values, 00 is 00, and that 64 is 100. In % in that case.
+So ```"${idrac[@]}" raw 0x30 0x30 0x02 0xff 0x0a``` will set the fan speed to 10% and ```"${idrac[@]}" raw 0x30 0x30 0x02 0xff 0x0c``` will set the fan speed to 12%, for example.
+
 
 #### Muh powerbill - delloem powermonitor
 ```"${idrac[@]}" delloem powermonitor```
