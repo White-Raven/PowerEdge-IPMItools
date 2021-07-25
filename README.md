@@ -168,7 +168,7 @@ Just have fun with grep.
 |```"${idrac[@]}" [chassis] power off``` | issue a hard power off |
 |```"${idrac[@]}" [chassis] power on``` | issue a hard power on |
 |```"${idrac[@]}" [chassis] power reset``` | issue a hard reset |
-|```"${idrac[@]}" chassis bootdev pxe``` <br> ```ipmitool chassis bootdev cdrom``` <br> ```ipmitool chassis bootdev bios``` | Modify boot device for next reboot|
+|```"${idrac[@]}" chassis bootdev pxe``` <br> ```"${idrac[@]}" chassis bootdev cdrom``` <br> ```"${idrac[@]}" chassis bootdev bios``` | Modify boot device for next reboot|
 |```ipmitool lan print 1``` <br> ```ipmitool lan set 1 ipsrc [ static \| dhcp ]``` <br> ```ipmitool lan set 1 ipaddr {YOUR DESIRED IP}``` <br> ```ipmitool lan set 1 netmask {YOUR NETMASK}``` <br> ```ipmitool lan set 1 defgw ipaddr 10.0.1.1``` | Display/configure lan settings if you're not connecting to the IPMI from an other machine, <br> but configuring it locally. <br> I'm not sure how it behaves to reconfigure like that an IPMI <br>to which you're actively connected through something else than the web interface. |
 |```"${idrac[@]}" bmc reset cold``` | Hanging BMC, hardreset |
 
