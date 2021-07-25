@@ -193,6 +193,53 @@ The escape sequence ~+. terminates the session and resets the terminal settings.
 ```
 "${idrac[@]}"  sol deactivate
 ```
+
+<details>
+<summary>
+<i>inittab and getty no longer works in RHEL7, so have fun with some config for systemd. </i>
+</summary>
+<p>
+```shell
+## /etc/systemd/system/mgetty.service ::
+
+[Unit]
+Description=Smart Modem Getty(mgetty)
+Documentation=man:mgetty(8)
+Requires=systemd-udev-settle.service
+After=systemd-udev-settle.service
+
+[Service]
+Type=simple
+ExecStart=/sbin/mgetty -r -s 115200 /dev/ttyS1
+# -r is for direct connection (ie null modem)
+Restart=always
+PIDFile=/var/run/mgetty.pid.ttyS1
+
+[Install]
+WantedBy=basic.target multi-user.target
+```
+and 
+```shell
+ls -Z /usr/sbin/mgetty
+ls -Z /var/log/mgetty.*
+chcon --type getty_exec_t /var/log/mgetty.*.log
+### still need more tweaking, but don't really prevent mgetty from creating a login session.
+
+systemctl start  mgetty.service
+systemctl enable mgetty.service
+# enable will create sym links in /etc/systemd/system/basic.target.wants and multi-user.target.wants
+
+# create ipmi user #3 to have access
+ipmitool user list
+ipmitool user set password 3 NewIpmiPwForUserNum3	# if need to change password
+ipmitool user enable 3
+ipmitool channel setaccess 1 3 ipmi=on privilege=4
+ipmitool user priv 3 4 1
+```
+</p>
+</details>
+
+
 ## Blade stuff
 
 #### Fishing for Dell Chassis ServiceTag from a node using hexcode and node programming
