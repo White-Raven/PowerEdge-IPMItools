@@ -5,6 +5,8 @@
 - [IPMItool](https://github.com/ipmitool/ipmitool)
 - G11, G12 or G13** Dell Poweredge server (the ones I know most about)
 
+**_I was told it is also working on iDrac8 (G13), but that beyond iDrac update 3.30.30.30, Dell has modified/removed the ability to control the fans via IMPI, and there may be other changes I'm not aware of._
+
 #### Before everything
 
 ... A little tip. iDrac, in its web interface, truncates the password at 20 characters.
@@ -245,6 +247,5 @@ Whiiiich can't be run as is because the sensor IDs are platform specific.
 
 Once the Platform Event Trap events are generated, you can verify them using the command ipmitool -I open sel list.
 
-----------------
+#NIGHTMARE NIGHTMARE NIGHTMARE NIGHTMARE
 
-**_I was told it is also working on iDrac8 (G13), but that beyond iDrac update 3.30.30.30, Dell has modified/removed the ability to control the fans via IMPI, and there may be other changes I'm not aware of._
