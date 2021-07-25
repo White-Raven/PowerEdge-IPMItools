@@ -37,7 +37,7 @@ idrac=(ipmitool -I lanplus -H $IPMIHOST -U $IPMIUSER -P $IPMIPW -y $IPMIEK)
 And that's EXACTLY what I will use all along this little page, because these never change! (except in the last section, once.)
 
 
-## Various IPMI commands from forgotten dead-C-scrolls for iDrac that can be handy
+## Introduction to the forgotten dead-C-scrolls for iDrac that can be handy
 
 Some of them can feel like "eh, no point in having that displayed". Grep is your friend, and a little demo of it:
 ```
