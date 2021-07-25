@@ -1,4 +1,6 @@
 # PowerEdge-IPMItools
+#### About
+Just trying to put as much Dell Poweredge IPMItool related stuff available in one place as possible.
 
 #### Requirements
 - iDrac Entreprise (afaik it won't work with express for most, will need help to sort stuff.)
