@@ -36,7 +36,9 @@ And that's EXACTLY what I will use all along this little page, because these nev
 ## Various IPMI commands from forgotten dead-C-scrolls for iDrac that can be handy
 
 Some of them can feel like "eh, no point in having that displayed". Grep is your friend, and a little demo of it:
-```"${idrac[@]}" sdr type temperature```
+```
+"${idrac[@]}" sdr type temperature
+```
 returns in my case:
 ```
 Inlet Temp | 04h | ok | 7.1 | 20 degrees C
