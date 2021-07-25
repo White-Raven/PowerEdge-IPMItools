@@ -58,7 +58,7 @@ will return:
 ```
 Oh. Exploitable data.
 
-#### Fan Control - raw
+## Fan Control - raw
 Since we pulled temperatures, let's talk about cooling.
 I posted there some time ago my [/PowerEdge-shutup](https://github.com/White-Raven/PowerEdge-shutup) repo, with a basic script to manage server cooling, with potentially lower speed (and noise) than the stock profiles.
 Going quickly over these, the commands used are as follow:
@@ -75,7 +75,7 @@ So ```"${idrac[@]}" raw 0x30 0x30 0x02 0xff 0x0a``` will set the fan speed to 10
 Once again, you can check my [repo](https://github.com/White-Raven/PowerEdge-shutup) dedicated to fan control to see how this fits into some logic.
 
 
-#### Muh powerbill - delloem powermonitor
+## Muh powerbill - delloem powermonitor
 ```"${idrac[@]}" delloem powermonitor```
 returns in my case:
 ```Power Tracking Statistics
@@ -88,7 +88,7 @@ Start Time : 02/20/20 10:03:52 CETPeak Time : 07/13/21 05:45:27 CESTPeak Reading
 Statistic : System Peak Amperage
 Start Time : 02/20/20 10:03:52 CETPeak Time : 07/13/21 05:45:27 CESTPeak Reading : 4.5 A
 ```
-#### The big guns - sol activate
+## The big guns - sol activate
 In your BIOS, you can enable SOL. Serial over Lan. A potentially powerfull tool for administration.
 
 You can enable SOL functionality in the BIOS utility by first rebooting the server and pressing F2 to launch the utility. 
