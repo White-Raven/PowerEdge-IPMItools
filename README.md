@@ -168,6 +168,7 @@ Only one SOL session can be active at a time.
 <i>[CLICK ME] Here the cheatsheet of what you can use as various escape sequences within a SOL session: </i>
 </summary>
 <p>
+
 Keyboard mapping for console redirection or session task | Escape sequence 
 ------------ | -------------
 Terminate connection | ~+.
