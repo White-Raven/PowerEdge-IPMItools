@@ -82,6 +82,10 @@ Ctrl+J | Esc+Ctrl+J
 Alt+x (where x is any letter) | Esc+X+x (where x is any letter, and X is the uppercase of that letter)
 Ctrl+Alt+Del | Esc+R+Esc+r+Esc+R
 
+The escape sequence ~+. terminates the session and resets the terminal settings. However, if SOL mode exits unintentionally and the BMC must be reset, you can also terminate the current session from another console using the following command:
+```
+"${idrac[@]}"  sol deactivate
+```
 
 
 
