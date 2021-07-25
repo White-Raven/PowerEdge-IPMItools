@@ -199,7 +199,7 @@ The escape sequence ~+. terminates the session and resets the terminal settings.
 <i>inittab and getty no longer works in RHEL7, so have fun with some config for systemd. </i>
 </summary>
 <p>
-```shell
+<code>
 ## /etc/systemd/system/mgetty.service ::
 
 [Unit]
@@ -217,9 +217,9 @@ PIDFile=/var/run/mgetty.pid.ttyS1
 
 [Install]
 WantedBy=basic.target multi-user.target
-```
+</code>
 and 
-```shell
+<code>
 ls -Z /usr/sbin/mgetty
 ls -Z /var/log/mgetty.*
 chcon --type getty_exec_t /var/log/mgetty.*.log
@@ -235,7 +235,7 @@ ipmitool user set password 3 NewIpmiPwForUserNum3	# if need to change password
 ipmitool user enable 3
 ipmitool channel setaccess 1 3 ipmi=on privilege=4
 ipmitool user priv 3 4 1
-```
+</code>
 </p>
 </details>
 
