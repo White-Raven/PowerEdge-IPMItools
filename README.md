@@ -137,7 +137,7 @@ Just have fun with grep.
 ## IPMI commands
 
 |Commands | Descriptions |
-| --------------------------- | ------------ |
+| --------------------------------- |:-------------:|
 |```"${idrac[@]}" mc info``` | To check firmware version |
 |```"${idrac[@]}" mc reset [ warm \| cold ]```| To reset the management controller |
 |```"${idrac[@]}" fru print``` | Show field-replaceable-unit details |
