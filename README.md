@@ -136,21 +136,21 @@ Just have fun with grep.
 
 ## IPMI commands
 
-Commands | Descriptions |
------------- | ------------- |
-```"${idrac[@]}" mc info``` | To check firmware version |
-```"${idrac[@]}" mc reset [ warm | cold ]```| To reset the management controller |
-```"${idrac[@]}" fru print``` | Show field-replaceable-unit details |
-```"${idrac[@]}" sdr list``` <br> ```ipmitool sdr type list``` <br> ```ipmitool sdr type Temperature``` <br> ```ipmitool sdr type Fan``` <br> ```ipmitool sdr type ‘Power Supply’``` | Show sensor output |
-```"${idrac[@]}" chassis status``` | |
-```"${idrac[@]}" chassis identify []``` | turn on front panel identify light (default 15s) |
-```"${idrac[@]}" [chassis] power soft``` | initiate a soft-shutdown via acpi |
-```"${idrac[@]}" [chassis] power cycle``` | issue a hard power off, wait 1s, power on |
-```"${idrac[@]}" [chassis] power off``` | issue a hard power off |
-```"${idrac[@]}" [chassis] power on``` | issue a hard power on |
-```"${idrac[@]}" [chassis] power reset``` | issue a hard reset |
-```"${idrac[@]}" chassis bootdev pxe``` <br> ```ipmitool chassis bootdev cdrom``` <br> ```ipmitool chassis bootdev bios``` | Modify boot device for next reboot|
-```ipmitool lan print 1``` <br> ```ipmitool lan set 1 ipsrc [ static | dhcp ]``` <br> ```ipmitool lan set 1 ipaddr {YOUR DESIRED IP}``` <br> ```ipmitool lan set 1 netmask {YOUR NETMASK}``` <br> ```ipmitool lan set 1 defgw ipaddr 10.0.1.1``` <br> Display/configure lan settings, if you're not connecting to the IPMI from an other machine, but configuring it locally. I'm not sure how it behaves to reconfigure like that an IPMI to which you're actively connected through something else than the web interface.|
+|Commands | Descriptions |
+| ------------ | ------------ |
+|```"${idrac[@]}" mc info``` | To check firmware version |
+|```"${idrac[@]}" mc reset [ warm | cold ]```| To reset the management controller |
+|```"${idrac[@]}" fru print``` | Show field-replaceable-unit details |
+|```"${idrac[@]}" sdr list``` <br> ```"${idrac[@]}" sdr type list``` <br> ```"${idrac[@]}" sdr type Temperature``` <br> ```"${idrac[@]}" sdr type Fan``` <br> ```"${idrac[@]}" sdr type ‘Power Supply’``` | Show sensor output |
+|```"${idrac[@]}" chassis status``` | |
+|```"${idrac[@]}" chassis identify []``` | turn on front panel identify light (default 15s) |
+|```"${idrac[@]}" [chassis] power soft``` | initiate a soft-shutdown via acpi |
+|```"${idrac[@]}" [chassis] power cycle``` | issue a hard power off, wait 1s, power on |
+|```"${idrac[@]}" [chassis] power off``` | issue a hard power off |
+|```"${idrac[@]}" [chassis] power on``` | issue a hard power on |
+|```"${idrac[@]}" [chassis] power reset``` | issue a hard reset |
+|```"${idrac[@]}" chassis bootdev pxe``` <br> ```ipmitool chassis bootdev cdrom``` <br> ```ipmitool chassis bootdev bios``` | Modify boot device for next reboot|
+|```ipmitool lan print 1``` <br> ```ipmitool lan set 1 ipsrc [ static | dhcp ]``` <br> ```ipmitool lan set 1 ipaddr {YOUR DESIRED IP}``` <br> ```ipmitool lan set 1 netmask {YOUR NETMASK}``` <br> ```ipmitool lan set 1 defgw ipaddr 10.0.1.1``` <br> Display/configure lan settings, if you're not connecting to the IPMI from an other machine, but configuring it locally. I'm not sure how it behaves to reconfigure like that an IPMI to which you're actively connected through something else than the web interface.|
 
 
 ## The big guns - sol activate
