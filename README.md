@@ -46,9 +46,37 @@ Start Time : 02/20/20 10:03:52 CETPeak Time : 07/13/21 05:45:27 CESTPeak Reading
 Statistic : System Peak Amperage
 Start Time : 02/20/20 10:03:52 CETPeak Time : 07/13/21 05:45:27 CESTPeak Reading : 4.5 A
 ```
-
-
-
+#### The big guns - sol activate
+In your BIOS, you can enable SOL. Serial over Lan. A potentially powerfull tool for administration.
+You can enable SOL functionality in the BIOS utility by first rebooting the server and pressing F2 to launch the utility. 
+In the Serial Communication options, they should then set the Serial Communication setting to On with Console Redirection via COM2, the External Serial Connector setting to Remote Access Device, the Failsafe Baud Rate setting to any suitable value (the BIOS attempts to determine this value automatically, and uses this baud rate only if that attempt fails).
+```"${idrac[@]}"  sol activate``` is basically all you need then to launch it.
+Only one SOL session can be active at a time. Here the cheatsheet of what you can use as various escape sequences within a SOL session:
+Keyboard mapping for console redirection or session task | Escape sequence |
+------------ | -------------
+Terminate connection | ~+.
+Suspend IPMItool | ~+^+Z
+Send break | ~+B
+Print escape sequence help | ~+?
+F1 | Esc+1
+F2 | Esc+2
+F3 | Esc+3
+F9 | Esc+4
+F10 | Esc+0
+F11 | Esc+!
+F12 | Esc+@
+Home | Esc+h
+End | Esc+k
+Insert | Esc++
+Delete | Esc+-
+Page up | Esc+?
+Page down | Esc+/
+Ctrl+M | Esc+Ctrl+M
+Ctrl+H | Esc+Ctrl+H
+Ctrl+I | Esc+Ctrl+I
+Ctrl+J | Esc+Ctrl+J
+Alt+x (where x is any letter) | Esc+X+x (where x is any letter, and X is the uppercase of that letter)
+Ctrl+Alt+Del | Esc+R+Esc+r+Esc+R
 
 
 
