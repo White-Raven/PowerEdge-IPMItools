@@ -135,6 +135,11 @@ Start Time : 02/20/20 10:03:52 CETPeak Time : 07/13/21 05:45:27 CESTPeak Reading
 Just have fun with grep.
 
 ## IPMI commands
+<details>
+<summary>
+<b>[CLICK ME] Big table colasped: </b>
+</summary>
+<p>
 
 |Commands | Descriptions |
 | --------------------------------- |-------------|
@@ -151,7 +156,8 @@ Just have fun with grep.
 |```"${idrac[@]}" [chassis] power reset``` | issue a hard reset |
 |```"${idrac[@]}" chassis bootdev pxe``` <br> ```ipmitool chassis bootdev cdrom``` <br> ```ipmitool chassis bootdev bios``` | Modify boot device for next reboot|
 |```ipmitool lan print 1``` <br> ```ipmitool lan set 1 ipsrc [ static \| dhcp ]``` <br> ```ipmitool lan set 1 ipaddr {YOUR DESIRED IP}``` <br> ```ipmitool lan set 1 netmask {YOUR NETMASK}``` <br> ```ipmitool lan set 1 defgw ipaddr 10.0.1.1``` | Display/configure lan settings if you're not connecting to the IPMI from an other machine, <br> but configuring it locally. <br> I'm not sure how it behaves to reconfigure like that an IPMI <br>to which you're actively connected through something else than the web interface. |
-
+</p>
+</details>
 
 ## The big guns - sol activate
 In your BIOS, you can enable SOL. Serial over Lan. A potentially powerfull tool for administration.
