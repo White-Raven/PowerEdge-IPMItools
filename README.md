@@ -48,9 +48,13 @@ Start Time : 02/20/20 10:03:52 CETPeak Time : 07/13/21 05:45:27 CESTPeak Reading
 ```
 #### The big guns - sol activate
 In your BIOS, you can enable SOL. Serial over Lan. A potentially powerfull tool for administration.
+
 You can enable SOL functionality in the BIOS utility by first rebooting the server and pressing F2 to launch the utility. 
+
 In the Serial Communication options, they should then set the Serial Communication setting to On with Console Redirection via COM2, the External Serial Connector setting to Remote Access Device, the Failsafe Baud Rate setting to any suitable value (the BIOS attempts to determine this value automatically, and uses this baud rate only if that attempt fails).
+
 ```"${idrac[@]}"  sol activate``` is basically all you need then to launch it.
+
 Only one SOL session can be active at a time. Here the cheatsheet of what you can use as various escape sequences within a SOL session:
 Keyboard mapping for console redirection or session task | Escape sequence |
 ------------ | -------------
