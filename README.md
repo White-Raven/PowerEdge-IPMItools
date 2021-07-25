@@ -137,12 +137,12 @@ Just have fun with grep.
 ## IPMI commands
 
 |Commands | Descriptions |
-| --------------------------------- |:-------------:|
+| --------------------------------- |-------------|
 |```"${idrac[@]}" mc info``` | To check firmware version |
 |```"${idrac[@]}" mc reset [ warm \| cold ]```| To reset the management controller |
 |```"${idrac[@]}" fru print``` | Show field-replaceable-unit details |
 |```"${idrac[@]}" sdr list``` <br> ```"${idrac[@]}" sdr type list``` <br> ```"${idrac[@]}" sdr type Temperature``` <br> ```"${idrac[@]}" sdr type Fan``` <br> ```"${idrac[@]}" sdr type ‘Power Supply’``` | Show sensor output |
-|```"${idrac[@]}" chassis status``` | |
+|```"${idrac[@]}" chassis status``` | Well... status |
 |```"${idrac[@]}" chassis identify []``` | turn on front panel identify light (default 15s) |
 |```"${idrac[@]}" [chassis] power soft``` | initiate a soft-shutdown via acpi |
 |```"${idrac[@]}" [chassis] power cycle``` | issue a hard power off, wait 1s, power on |
