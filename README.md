@@ -134,44 +134,23 @@ Start Time : 02/20/20 10:03:52 CETPeak Time : 07/13/21 05:45:27 CESTPeak Reading
 ```
 Just have fun with grep.
 
-## Power control
-Muh straight forward: 
-```"${idrac[@]}"  chassis power status```  Returns "Chassis Power is" on or off
+## IPMI commands
 
-```"${idrac[@]}"  chassis power down``` Powers down
-```"${idrac[@]}"  chassis power on``` Cold start
-```"${idrac[@]}"  chassis power cycle``` Power cycles
-
-## Finding Dell Chassis ServiceTag from a node using hexcode and node programming
-
-For dell C6320 and the like, the chassis has its own service tag.
-hex code via ipmi "raw" command can retrieve them.
-conversion would be needed. eg
-xxd -r reverse hex conversion to ascii, avail from vim-common rpm
-#### Dell C6320 vintage 2017
-```"${idrac[@]}"  raw 0x30 0xc8 0x01 0x00 0x0b 0x00 0x00 0x00 | xxd -r```
-
-If it goes nowhere, for example the C6220II should use the same commands as the C6320, but if the system is too old, then the original version of this unit won’t work.
-The C6100 and C6220 do not have a unique chassis service tag to query.
-To query the Set FCB value run ALL of the following commands in this order
-(It generate and execute some sort of reservation, each command should produce some output, till the last one should yield a serial number of the chassis)
-
-```"${idrac[@]}" raw 0x30 0xC8 0x01 0x00 0x02 0x00 0x00 0x00```
-
-```"${idrac[@]}" raw 0x30 0xC8 0x01 0x00 0x02 0x00 0x00 0x00 0x00```
-
-```"${idrac[@]}" raw 0x30 0xC8 0x01 0x00 0x02 0x00 0x00 0x00 0x01```
-
-```"${idrac[@]}" raw 0x30 0xC8 0x01 0x00 0x0c 0x00 0x02 0x00 0x00 0x00 | xxd -r ```
-
-#### Programming Dell Chassis from a node using IPMI RAW commands
-Some chassis have svc tag programmed from factory, others are not. 
-For inventory purpose, if one wish to program in the service tag so that they can be queried. 
-Here is an example of steps to program svc tag of "bjhkqd2" to the chassis via one of its node.
-bjhkq69 in hex is 62 6a 68 6b 71 36 39
-```"${idrac[@]}" raw 0x30 0xC8 0x00 0x00 0x0B 0x00 0x00 0x00 0x0B 0x00 0x11 0x0A 0x62 0x6a 0x68 0x6b 0x71 0x36 0x39```
-
-The "commit" part of the command is: ```"${idrac[@]}" raw 0x30 0xC8 0x01 0x00 0x02 0x00 0x00 0x00```
+Commands | Descriptions |
+------------ | ------------- |
+```"${idrac[@]}" mc info``` | To check firmware version |
+```"${idrac[@]}" mc reset [ warm | cold ]```| To reset the management controller |
+```"${idrac[@]}" fru print``` | Show field-replaceable-unit details |
+```"${idrac[@]}" sdr list``` <br> ```ipmitool sdr type list``` <br> ```ipmitool sdr type Temperature``` <br> ```ipmitool sdr type Fan``` <br> ```ipmitool sdr type ‘Power Supply’``` | Show sensor output |
+```"${idrac[@]}" chassis status``` | |
+```"${idrac[@]}" chassis identify []``` | turn on front panel identify light (default 15s) |
+```"${idrac[@]}" [chassis] power soft``` | initiate a soft-shutdown via acpi |
+```"${idrac[@]}" [chassis] power cycle``` | issue a hard power off, wait 1s, power on |
+```"${idrac[@]}" [chassis] power off``` | issue a hard power off |
+```"${idrac[@]}" [chassis] power on``` | issue a hard power on |
+```"${idrac[@]}" [chassis] power reset``` | issue a hard reset |
+```"${idrac[@]}" chassis bootdev pxe``` <br> ```ipmitool chassis bootdev cdrom``` <br> ```ipmitool chassis bootdev bios``` | Modify boot device for next reboot|
+```ipmitool lan print 1``` <br> ```ipmitool lan set 1 ipsrc [ static | dhcp ]``` <br> ```ipmitool lan set 1 ipaddr {YOUR DESIRED IP}``` <br> ```ipmitool lan set 1 netmask {YOUR NETMASK}``` <br> ```ipmitool lan set 1 defgw ipaddr 10.0.1.1``` <br> Display/configure lan settings, if you're not connecting to the IPMI from an other machine, but configuring it locally. I'm not sure how it behaves to reconfigure like that an IPMI to which you're actively connected through something else than the web interface.|
 
 
 ## The big guns - sol activate
@@ -214,6 +193,39 @@ The escape sequence ~+. terminates the session and resets the terminal settings.
 ```
 "${idrac[@]}"  sol deactivate
 ```
+## Blade stuff
+
+#### Fishing for Dell Chassis ServiceTag from a node using hexcode and node programming
+
+Dell C6320 and similar blade servers, their chassis has its own service tag.
+Just a bit of hex code in raw can retrieve them, though they would have to be converted back
+Optional : xxd -r reverse hex conversion to ascii, avail from vim-common rpm
+
+Example: Dell C6320 vintage 2017
+```"${idrac[@]}"  raw 0x30 0xc8 0x01 0x00 0x0b 0x00 0x00 0x00 | xxd -r```
+
+It's possible it gives nothing, for example the C6220II should use the same commands as the C6320, but if it's an too much older blade system, then it might not work.
+The C6100 and C6220 for example don't have their own unique chassis ServiceTag to query.
+To at least try to query the Set FCB values, run ALL of the following commands in this order
+(It generate and execute some sort of reservation, each command should produce some garbagio, till the last one should yield a serial number for the chassis)
+
+```"${idrac[@]}" raw 0x30 0xC8 0x01 0x00 0x02 0x00 0x00 0x00```
+
+```"${idrac[@]}" raw 0x30 0xC8 0x01 0x00 0x02 0x00 0x00 0x00 0x00```
+
+```"${idrac[@]}" raw 0x30 0xC8 0x01 0x00 0x02 0x00 0x00 0x00 0x01```
+
+```"${idrac[@]}" raw 0x30 0xC8 0x01 0x00 0x0c 0x00 0x02 0x00 0x00 0x00 | xxd -r ```
+
+#### Programming a Dell Chassis from a node using some raw commands
+Some chassis have their ServiceTag programmed from factory, others are not. 
+For inventory purpose, can program-in the service tag so that they can be queried. 
+For example there we're gonna program the Service Tag of "bjhkqd2" to the chassis via one of its node.
+bjhkq69 in hex is 62 6a 68 6b 71 36 39
+```"${idrac[@]}" raw 0x30 0xC8 0x00 0x00 0x0B 0x00 0x00 0x00 0x0B 0x00 0x11 0x0A 0x62 0x6a 0x68 0x6b 0x71 0x36 0x39```
+
+The "commit" part of the command is: ```"${idrac[@]}" raw 0x30 0xC8 0x01 0x00 0x02 0x00 0x00 0x00```
+
 
 ## The RAW command disclaimer.
 
