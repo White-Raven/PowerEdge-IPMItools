@@ -178,6 +178,7 @@ Just have fun with grep.
 
 </p>
 </details>
+
 - You can also check the [man page](https://linux.die.net/man/1/ipmitool) of IPMI tool for more in depth info.
 
 ## The big guns - sol activate
