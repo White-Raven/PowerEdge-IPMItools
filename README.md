@@ -108,8 +108,8 @@ Commands | Descriptions
 ```powermonitor clear peakpower``` | Reset peak power reading
 ```powermonitor powerconsumption``` | Displays power consumption in <watt|btuphr>
 ```powermonitor powerconsumptionhistory <watt|btuphr>``` | Displays power consumption history
-```powermonitor getpowerbudget``` | Displays power cap in ```<watt|btuphr>```
-```powermonitor setpowerbudget <val> <watt|btuphr|percent>``` | Allows user to set the power cap in ```<watt|BTU/hr|percentage>```
+```powermonitor getpowerbudget``` | Displays power cap in ```<watt\|btuphr>```
+```powermonitor setpowerbudget <val> <watt\|btuphr\|percent>``` | Allows user to set the power cap in ```<watt\|BTU/hr\|percentage>```
 ```powermonitor enablepowercap``` |To enable set power cap
 ```powermonitor disablepowercap``` | To disable set power cap
 ```windbg start``` | Starts the windbg session (Cold Reset & SOL Activation)
