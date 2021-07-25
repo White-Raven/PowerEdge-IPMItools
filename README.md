@@ -162,7 +162,12 @@ In the Serial Communication options, they should then set the Serial Communicati
 
 ```"${idrac[@]}"  sol activate``` is basically all you need then to launch it.
 
-Only one SOL session can be active at a time. Here the cheatsheet of what you can use as various escape sequences within a SOL session:
+Only one SOL session can be active at a time. 
+<details>
+<summary>
+<i>[CLICK ME] Here the cheatsheet of what you can use as various escape sequences within a SOL session: </i>
+</summary>
+<p>
 Keyboard mapping for console redirection or session task | Escape sequence 
 ------------ | -------------
 Terminate connection | ~+.
@@ -188,6 +193,8 @@ Ctrl+I | Esc+Ctrl+I
 Ctrl+J | Esc+Ctrl+J
 Alt+x (where x is any letter) | Esc+X+x (where x is any letter, and X is the uppercase of that letter)
 Ctrl+Alt+Del | Esc+R+Esc+r+Esc+R
+</p>
+</details>
 
 The escape sequence ~+. terminates the session and resets the terminal settings. However, if SOL mode exits unintentionally and the BMC must be reset, you can also terminate the current session from another console using the following command:
 ```
@@ -196,7 +203,7 @@ The escape sequence ~+. terminates the session and resets the terminal settings.
 
 <details>
 <summary>
-<i>inittab and getty no longer works in RHEL7, so have fun with some config for systemd. </i>
+<i>[CLICK ME] inittab and getty no longer works in RHEL7, so have fun with some config for systemd. </i>
 </summary>
 <p>
 
