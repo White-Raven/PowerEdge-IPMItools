@@ -1,18 +1,18 @@
 # PowerEdge-IPMItools
 
-## Requirements
+#### Requirements
 - iDrac Entreprise (afaik it won't work with express for most, will need help to sort stuff.)
 - [IPMItool](https://github.com/ipmitool/ipmitool)
 - G11, G12 or G13** Dell Poweredge server (the ones I know most about)
 
-## Before everything
+#### Before everything
 
 ... A little tip. iDrac, in its web interface, truncates the password at 20 characters.
 Once you changed your iDrac password from the default root/calvin combo
 - if you did it from the web interface, in IPMItool, only use the 20 first characters.
 - if you did it from IPMItool... I don't know! That page is open to contributions, and I don't want to risk borking my iDrac to find out... yet! So meanwhile, don't try it?
 
-## Command synthax and how to make your script less prone to mistakes by repetition.
+#### Command synthax and how to make your script less prone to mistakes by repetition.
 
 You can, in your shell script, start by setting variables to make you life easier
 ```
