@@ -82,39 +82,39 @@ Roughtly ```"${idrac[@]}" delloem [-mx -NPRUEFJTVY] command```
 
 Options | Descriptions 
 ------------ | -------------
--m 002000 | Show FRU for a specific MC (e.g. bus 00, sa 20, lun 00). This could be used for PICMG or ATCA blade systems. The trailing character, if present, indicates SMI addressing if 's', or IPMB addressing if 'i' or not present.
--x | Causes extra debug messages to be displayed.
--N nodename | Nodename or IP address of the remote target system. If a nodename is specified, IPMI LAN interface is used. Otherwise the local system management interface is used.
--P/-R rmt_pswd | Remote password for the nodename given. The default is a null password.
--U rmt_user | Remote username for the nodename given. The default is a null username.
--E | Use the remote password from Environment variable IPMI_PASSWORD.
--F drv_t | Force the driver type to one of the followng: imb, va, open, gnu, landesk, lan, lan2, lan2i, kcs, smb. Note that lan2i means lan2 with intelplus. The default is to detect any available driver type and use it.
--J | Use the specified LanPlus cipher suite (0 thru 14): 0=none/none/none, 1=sha1/none/none, 2=sha1/sha1/none, 3=sha1/sha1/cbc128, 4=sha1/sha1/xrc4_128, 5=sha1/sha1/xrc4_40, 6=md5/none/none, ... 14=md5/md5/xrc4_40. Default is 3.
--T | Use a specified IPMI LAN Authentication Type: 0=None, 1=MD2, 2=MD5, 4=Straight Password, 5=OEM.
--V | Use a specified IPMI LAN privilege level. 1=Callback level, 2=User level, 3=Operator level, 4=Administrator level (default), 5=OEM level.
--Y | Yes, do prompt the user for the IPMI LAN remote password. Alternatives for the password are -E or -P.
+```-m 002000 ```| Show FRU for a specific MC (e.g. bus 00, sa 20, lun 00). This could be used for PICMG or ATCA blade systems. The trailing character, if present, indicates SMI addressing if 's', or IPMB addressing if 'i' or not present.
+```-x``` | Causes extra debug messages to be displayed.
+```-N nodename``` | Nodename or IP address of the remote target system. If a nodename is specified, IPMI LAN interface is used. Otherwise the local system management interface is used.
+```-P/-R rmt_pswd``` | Remote password for the nodename given. The default is a null password.
+```-U rmt_user``` | Remote username for the nodename given. The default is a null username.
+```-E``` | Use the remote password from Environment variable IPMI_PASSWORD.
+```-F drv_t``` | Force the driver type to one of the followng: imb, va, open, gnu, landesk, lan, lan2, lan2i, kcs, smb. Note that lan2i means lan2 with intelplus. The default is to detect any available driver type and use it.
+```-J``` | Use the specified LanPlus cipher suite (0 thru 14): 0=none/none/none, 1=sha1/none/none, 2=sha1/sha1/none, 3=sha1/sha1/cbc128, 4=sha1/sha1/xrc4_128, 5=sha1/sha1/xrc4_40, 6=md5/none/none, ... 14=md5/md5/xrc4_40. Default is 3.
+```-T``` | Use a specified IPMI LAN Authentication Type: 0=None, 1=MD2, 2=MD5, 4=Straight Password, 5=OEM.
+```-V``` | Use a specified IPMI LAN privilege level. 1=Callback level, 2=User level, 3=Operator level, 4=Administrator level (default), 5=OEM level.
+```-Y``` | Yes, do prompt the user for the IPMI LAN remote password. Alternatives for the password are -E or -P.
 
 #### Commands
 
-Options | Descriptions 
+Commands | Descriptions 
 ------------ | -------------
-mac list | Lists the MAC address of LOMs
-mac get <NIC number> | Shows the MAC address of specified LOM. 0-7 System LOM, 8- DRAC/iDRAC.
-lan set <Mode> | Sets the NIC Selection Mode (dedicated, shared, shared with failover lom2, shared with Failover all loms).
-lan get | Returns the current NIC Selection Mode (dedicated, shared, shared with failover lom2, shared with Failover all loms).
-lan get active | Returns the current active NIC (dedicated, LOM1, LOM2, LOM3, LOM4).
-powermonitor | Shows power tracking statistics
-powermonitor clear cumulativepower | Reset cumulative power reading
-powermonitor clear peakpower | Reset peak power reading
-powermonitor powerconsumption | Displays power consumption in <watt|btuphr>
-powermonitor powerconsumptionhistory <watt|btuphr> | Displays power consumption history
-powermonitor getpowerbudget | Displays power cap in <watt|btuphr>
-powermonitor setpowerbudget <val> <watt|btuphr|percent> | Allows user to set the power cap in <watt|BTU/hr|percentage>
-powermonitor enablepowercap |To enable set power cap
-powermonitor disablepowercap | To disable set power cap
-windbg start | Starts the windbg session (Cold Reset & SOL Activation)
-windbg end | Ends the windbg session (SOL Deactivation)
-vFlash info Card | Shows Extended SD Card information
+```mac list``` | Lists the MAC address of LOMs
+```mac get <NIC number>``` | Shows the MAC address of specified LOM. 0-7 System LOM, 8- DRAC/iDRAC.
+```lan set <Mode>``` | Sets the NIC Selection Mode (dedicated, shared, shared with failover lom2, shared with Failover all loms).
+```lan get``` | Returns the current NIC Selection Mode (dedicated, shared, shared with failover lom2, shared with Failover all loms).
+```lan get active``` | Returns the current active NIC (dedicated, LOM1, LOM2, LOM3, LOM4).
+```powermonitor``` | Shows power tracking statistics
+```powermonitor clear cumulativepower``` | Reset cumulative power reading
+```powermonitor clear peakpower``` | Reset peak power reading
+```powermonitor powerconsumption``` | Displays power consumption in <watt|btuphr>
+```powermonitor powerconsumptionhistory <watt|btuphr>``` | Displays power consumption history
+```powermonitor getpowerbudget``` | Displays power cap in ```<watt|btuphr>```
+```powermonitor setpowerbudget <val> <watt|btuphr|percent>``` | Allows user to set the power cap in ```<watt|BTU/hr|percentage>```
+```powermonitor enablepowercap``` |To enable set power cap
+```powermonitor disablepowercap``` | To disable set power cap
+```windbg start``` | Starts the windbg session (Cold Reset & SOL Activation)
+```windbg end``` | Ends the windbg session (SOL Deactivation)
+```vFlash info Card``` | Shows Extended SD Card information
   
 For example :
   
