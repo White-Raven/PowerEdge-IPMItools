@@ -53,7 +53,7 @@ Temp | 0Fh | ok | 3.2 | 40 degrees C
 ```
 BUT
 ```
-ipmitool sdr type temperature |grep 0Fh |grep degrees |grep -Po '\d{2}' | tail -1
+ipmitool sdr type temperature |grep 0Eh |grep degrees |grep -Po '\d{2}' | tail -1
 ipmitool sdr type temperature |grep 0Fh |grep degrees |grep -Po '\d{2}' | tail -1
 ```
 will return:
