@@ -20,7 +20,7 @@ Once you changed your iDrac password from the default root/calvin combo
 
 You can, in your shell script, start by setting variables to make you life easier
 ```
-IPMIHOST=192.168.0.69
+IPMIHOST=192.168.0.42
 IPMIUSER=root
 IPMIPW=calvin
 #Encryption key
