@@ -38,6 +38,8 @@ Ipmitool can be used in multiple ways, from sending commands to the IPMI of the 
 
 This, and the generation of server you're on will change the -I interface type, between lan and lanplus amongst other ones, or for example if -H will be the actual IPMI host IP, or the nodename in some blade servers. 
 
+**_Side note: you shouldn't ever store credentials in a script. Period. Here it's an example. I suggest you give a look at tools like [/encpass](https://github.com/plyint/encpass.sh) for example._
+
 ## Introduction to the forgotten dead-C-scrolls for iDrac that can be handy
 
 Some of them can feel like "eh, no point in having that displayed". Grep is your friend, and a little demo of it:
