@@ -7,7 +7,7 @@ Just trying to put as much Dell Poweredge IPMItool related stuff available in on
 - [IPMItool](https://github.com/ipmitool/ipmitool)
 - G11, G12 or G13** Dell Poweredge server (the ones I know most about)
 
-**_I was told it is also working on iDrac8 (G13), but that beyond iDrac update 3.30.30.30, Dell has modified/removed the ability to control the fans via IMPI, and there may be other changes I'm not aware of._
+_I was told it is also working on iDrac8 (G13), but that beyond iDrac update 3.30.30.30, Dell has modified/removed the ability to control the fans via IMPI, and there may be other changes I'm not aware of._
 
 #### Before everything
 
