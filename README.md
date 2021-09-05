@@ -334,6 +334,7 @@ For example, generating platform event messages:
 -  (eventdata): Table 42-3 of the IPMI 2.0 specification lists
 
 Which lead to platform event messages generating commands such as:
+
 Platform event message | Raw command 
 ------------ | -------------
 Processor Disabled | ```ipmitool raw 0x04 0x02 0x04 0x07 0x61 0x6F 0x08 00 00```
