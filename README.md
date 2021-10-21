@@ -81,6 +81,29 @@ These are hexadecimal values, 00 is 00, and that 64 is 100. In % in that case.
 So ```ipmitool raw 0x30 0x30 0x02 0xff 0x0a``` will set the fan speed to 10% and ```ipmitool raw 0x30 0x30 0x02 0xff 0x0c``` will set the fan speed to 12%, for example.
 Once again, you can check my [repo](https://github.com/White-Raven/PowerEdge-shutup) dedicated to fan control to see how this fits into some logic.
 
+## Fan Control - help they are pinned at 100%!!!
+Let me guess... you slapped in an unsupported PCIe card. Alright, let's fix that.
+First, we must check:
+```
+ipmitool raw 0x30 0xce 0x01 0x16 0x05 0x00 0x00 0x00
+```
+
+If it answers ```16 05 00 00 00 05 00 00 00 00```, the Third party PCIe device panic mode is enabled
+
+If it answers ```16 05 00 00 00 05 00 01 00 00```, the Third party PCIe device panic mode is disabled, and then I don't know what's up.
+
+
+If it is indeed enabled, and you seem to want to shush it, go for
+```
+ipmitool raw 0x30 0xce 0x00 0x16 0x05 0x00 0x00 0x00 0x05 0x00 0x01 0x00 0x00
+```
+
+If for some reason you want to enable it back on, just use this:
+```
+ipmitool raw 0x30 0xce 0x00 0x16 0x05 0x00 0x00 0x00 0x05 0x00 0x00 0x00 0x00
+```
+
+
 ## Delloem - the commands of Dell... Dell's commands...
 
 Roughtly ```ipmitool delloem [-mx -NPRUEFJTVY] command```
