@@ -19,7 +19,7 @@ Once you changed your iDrac password from the default root/calvin combo
 #### Command synthax and how to make your script less prone to mistakes by repetition.
 
 You can, in your shell script, start by setting variables to make you life easier
-```
+```bash
 IPMIHOST=192.168.0.42
 IPMIUSER=root
 IPMIPW=calvin
@@ -29,7 +29,7 @@ IPMIEK=0000000000000000000000000000000000000000
 ipmitool -I lanplus -H $IPMIHOST -U $IPMIUSER -P $IPMIPW -y $IPMIEK ##your arguments##
 ```
 As well as dumping that whole monstruosity into an array too for example:
-```
+```bash
 idrac=(ipmitool -I lanplus -H $IPMIHOST -U $IPMIUSER -P $IPMIPW -y $IPMIEK)
 
 "${idrac[@]}" ##your arguments##
@@ -43,23 +43,23 @@ This, and the generation of server you're on will change the -I interface type, 
 ## Introduction to the forgotten dead-C-scrolls for iDrac that can be handy
 
 Some of them can feel like "eh, no point in having that displayed". Grep is your friend, and a little demo of it:
-```
+```bash
 ipmitool sdr type temperature
 ```
 returns in my case:
-```
+```bash
 Inlet Temp | 04h | ok | 7.1 | 20 degrees C
 Exhaust Temp | 01h | ok | 7.1 | 39 degrees C
 Temp | 0Eh | ok | 3.1 | 41 degrees C
 Temp | 0Fh | ok | 3.2 | 40 degrees C
 ```
 BUT
-```
+```bash
 ipmitool sdr type temperature |grep 0Eh |grep degrees |grep -Po '\d{2}' | tail -1
 ipmitool sdr type temperature |grep 0Fh |grep degrees |grep -Po '\d{2}' | tail -1
 ```
 will return:
-```
+```bash
 41
 40
 ```
@@ -84,7 +84,7 @@ Once again, you can check my [repo](https://github.com/White-Raven/PowerEdge-shu
 ## Fan Control - help they are pinned at 100%!!!
 Let me guess... you slapped in an unsupported PCIe card. Alright, let's fix that.
 First, we must check:
-```
+```bash
 ipmitool raw 0x30 0xce 0x01 0x16 0x05 0x00 0x00 0x00
 ```
 
@@ -94,12 +94,12 @@ If it answers ```16 05 00 00 00 05 00 01 00 00```, the Third party PCIe device p
 
 
 If it is indeed enabled, and you seem to want to shush it, go for
-```
+```bash
 ipmitool raw 0x30 0xce 0x00 0x16 0x05 0x00 0x00 0x00 0x05 0x00 0x01 0x00 0x00
 ```
 
 If for some reason you want to enable it back on, just use this:
-```
+```bash
 ipmitool raw 0x30 0xce 0x00 0x16 0x05 0x00 0x00 0x00 0x05 0x00 0x00 0x00 0x00
 ```
 
@@ -251,7 +251,7 @@ Ctrl+Alt+Del | Esc+R+Esc+r+Esc+R
 </details>
 
 The escape sequence ~+. terminates the session and resets the terminal settings. However, if SOL mode exits unintentionally and the BMC must be reset, you can also terminate the current session from another console using the following command:
-```
+```bash
 ipmitool  sol deactivate
 ```
 
@@ -261,7 +261,7 @@ ipmitool  sol deactivate
 </summary>
 <p>
 
-```
+```bash
 ## /etc/systemd/system/mgetty.service ::
 
 [Unit]
@@ -282,7 +282,7 @@ WantedBy=basic.target multi-user.target
 ```
 and 
 
-```
+```bash
 ls -Z /usr/sbin/mgetty
 ls -Z /var/log/mgetty.*
 chcon --type getty_exec_t /var/log/mgetty.*.log
@@ -332,7 +332,7 @@ Some chassis have their ServiceTag programmed from factory, others are not.
 For inventory purpose, can program-in the service tag so that they can be queried. 
 For example there we're gonna program the Service Tag of "bjhkqd2" to the chassis via one of its node.
 bjhkq69 in hex is ```62 6a 68 6b 71 36 39``` which becomes ```0x62 0x6a 0x68 0x6b 0x71 0x36 0x39```
-```
+```bash
 ipmitool raw 0x30 0xC8 0x00 0x00 0x0B 0x00 0x00 0x00 0x0B 0x00 0x11 0x0A 0x62 0x6a 0x68 0x6b 0x71 0x36 0x39
 ## commit
 ipmitool raw 0x30 0xC8 0x01 0x00 0x02 0x00 0x00 0x00
